@@ -1,5 +1,5 @@
 const CORSMiddleware = (req, res, next) => {
-    const allowedOrigins = ['http://localhost:5173',"https://acepreassess.netlify.app","https://for-interns.bubbleapps.io/","null"]; // Add your default allowed origins here
+    const allowedOrigins = ['http://localhost:5173',"https://acepreassess.netlify.app","https://for-interns.bubbleapps.io/version-test/apicall","null"]; // Add your default allowed origins here
   
     const origin = req.headers.origin;
   
