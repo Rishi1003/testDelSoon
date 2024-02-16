@@ -9,32 +9,40 @@
     <button onclick="sendPostRequest()">Send POST Request</button>
 
     <script>
-        function sendPostRequest() {
-            // Creating a fetch request to localhost:3000
-            fetch('http://localhost:3000/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                // Setting the body of the request to JSON format
-                body: JSON.stringify({ message: 'test' }),
-                // Credentials: 'same-origin' ensures that the browser includes cookies 
-                // in the request only if the URL is from the same origin as the calling script.
-                credentials: 'same-origin'
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Response:', data);
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
+        // Assuming you have a route '/postdata' on your Express server that expects a POST request
+const postData = {
+    message: 'test'
+};
+
+// Convert the postData object to JSON
+const jsonData = JSON.stringify(postData);
+
+// Fetch options including method, headers, body, and credentials
+const fetchOptions = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: jsonData,
+    // Including credentials to send cookies
+    credentials: 'include' // send cookies with cross-origin requests
+};
+
+// Make the fetch request
+fetch('http://localhost:3000/', fetchOptions)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
+        return response.json();
+    })
+    .then(data => {
+        alert('Response: ' + JSON.stringify(data));
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+
     </script>
 </body>
 </html>
