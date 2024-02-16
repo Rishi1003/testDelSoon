@@ -6,7 +6,7 @@ const CORSMiddleware = require("./CORS.js")
 
 const app = express();
 
-app.use(CORSMiddleWare);
+app.use(CORSMiddleware);
 app.use(cors());
 app.use(cookieParser());
 
