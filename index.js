@@ -1,22 +1,18 @@
 const express = require("express");
-const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+
 
 const app = express();
 
-app.use(cookieParser());
 
 app.get("/",(req,res)=>{
     console.log("hits");
-
-    res.cookie('username', 'johnDoe',
-    {
-        httpOnly: true,
-    });
-    res.send("ok")
+    const token = jwt.sign("safd", "hellosecrestsfd");
+    res.send(`${token}`);
 });
 
 app.post("/",(req,res)=>{
-    console.log(req.cookies);
+    console.log(req.body.token);
     res.send("ok")
 });
 
