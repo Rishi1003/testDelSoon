@@ -1,9 +1,11 @@
+const cookieParser = require("cookie-parser");
 const express = require("express");
 const jwt = require('jsonwebtoken');
 
 
 const app = express();
 
+app.use(cookieParser());
 
 app.get("/",(req,res)=>{
     console.log("hits");
@@ -12,7 +14,7 @@ app.get("/",(req,res)=>{
 });
 
 app.post("/",(req,res)=>{
-    console.log(req.body.token);
+    console.log(req.cookies);
     res.send("ok")
 });
 
