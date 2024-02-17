@@ -14,7 +14,11 @@ app.use(cookieParser());
 app.get("/",(req,res)=>{
     console.log("hits");
     console.log(req.headers);
-    res.send("200")
+    res.cookie("terst","sfdafsd",{
+        httpOnly: false,
+        sameSite:"None",
+    })
+    res.send("200");
 });
 
 app.post("/",(req,res)=>{
