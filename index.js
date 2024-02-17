@@ -14,6 +14,7 @@ app.use(cookieParser());
 app.get("/",(req,res)=>{
     console.log("hits");
     console.log(req.headers);
+    res.send("200")
 });
 
 app.post("/",(req,res)=>{
